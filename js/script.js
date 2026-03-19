@@ -9,10 +9,9 @@ function fazerLogin() {
         return;
     }
 
-    // Regra de Negócio: admin = Premium
     if (user === 'admin' && pass === 'admin') {
         usuarioPremium = true;
-        alert("Acesso VIP! Você é Premium. Propagandas de lojas foram removidas, apenas novidades de streaming serão exibidas.");
+        alert("Acesso VIP! Você é Premium. Propagandas de lojas foram removidas.");
     } else {
         usuarioPremium = false;
         alert("Acesso Free! Você verá propagandas de parceiros para manter o app gratuito.");
@@ -24,16 +23,13 @@ function fazerLogin() {
 }
 
 function aplicarBeneficiosPremium() {
-    // Seleciona APENAS as propagandas gerais (produtos/lojas)
     const propagandasGerais = document.querySelectorAll('.general-ad');
     const botaoUpgrade = document.getElementById('btn-upgrade');
 
     if (usuarioPremium === true) {
-        // Esconde propagandas de terceiros (o Premium não vê)
         propagandasGerais.forEach(ad => ad.style.display = 'none');
         botaoUpgrade.style.display = 'none';
     } else {
-        // Mostra tudo para o usuário Free
         propagandasGerais.forEach(ad => ad.style.display = 'flex');
         botaoUpgrade.style.display = 'block';
     }
@@ -67,4 +63,27 @@ function sair() {
     telaLogin.classList.remove('oculta');
     telaLogin.classList.add('ativa');
     telaLogin.classList.add('login-bg');
+}
+
+// NOVA FUNÇÃO: Simula Conectar/Desconectar Serviço
+function toggleServico(idServico) {
+    const card = document.getElementById(idServico);
+    const btnConectar = card.querySelector('.btn-conectar');
+    const btnAssinar = card.querySelector('.btn-assinar');
+    const btnConectado = card.querySelector('.btn-conectado');
+
+    // Se o botão "Conectado" está oculto, significa que o serviço NÃO está conectado.
+    if (btnConectado.classList.contains('oculta')) {
+        // Simula conexão
+        btnConectar.classList.add('oculta');
+        btnAssinar.classList.add('oculta');
+        btnConectado.classList.remove('oculta');
+        alert("Serviço conectado com sucesso!");
+    } else {
+        // Simula desconexão
+        btnConectar.classList.remove('oculta');
+        btnAssinar.classList.remove('oculta');
+        btnConectado.classList.add('oculta');
+        alert("Serviço desconectado.");
+    }
 }

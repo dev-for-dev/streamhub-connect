@@ -10,7 +10,7 @@
 
     <main id="tela-login" class="tela ativa login-bg">
         <div class="login-box">
-            <img src="assets/logo.png" alt="StreamHub Connect" style="height: 50px; margin-bottom: 20px;">
+            <img src="assets/logo.png" alt="StreamHub" style="height: 50px; margin-bottom: 20px;">
             <h2>Acesse seu Hub</h2>
             <p style="color: var(--gray-light); margin-bottom: 20px; font-size: 0.9rem;">Dica: Use admin/admin para modo Premium</p>
             <input type="text" id="username" placeholder="Usuário" class="input-form">
@@ -20,10 +20,10 @@
     </main>
 
     <header id="header-nav" style="display: none;">
-        <div class="logo"><img src="logo.png" alt="StreamHub Connect"></div>
+        <div class="logo"><img src="assets/logo.png" alt="StreamHub Connect"></div>
         <nav>
             <a href="#" onclick="navegar('tela-home')">Início</a>
-            <a href="#" onclick="navegar('tela-catalogo-acao')">Ação & Aventura (Novo)</a>
+            <a href="#" onclick="navegar('tela-catalogo-acao')">Ação & Aventura</a>
             <a href="#" onclick="navegar('tela-add-assinatura')">Conectar Serviços</a>
         </nav>
         <button id="btn-upgrade" class="premium-btn" onclick="navegar('tela-premium')">Seja Premium</button>
@@ -60,11 +60,10 @@
     <main id="tela-catalogo-acao" class="tela oculta">
         <section class="sections">
             <h2 style="border-color: var(--magenta);">Explorar: Ação & Aventura</h2>
-            <p style="color: var(--gray-light); margin-bottom: 30px;">Títulos em alta baseados nos seus serviços conectados.</p>
-
             <div class="grid">
+
                 <div class="card p-0">
-                    <div class="movie-poster" style="background-image: url('https://image.tmdb.org/t/p/w500/8cdWjvZQUrmU318vA9Ppe0h6g31.jpg');">
+                    <div class="movie-poster" style="background-image: url('assets/catalogo/aneis.png');">
                         <div class="streaming-badge bg-prime">Prime Video</div>
                     </div>
                     <div class="card-content">
@@ -74,8 +73,8 @@
                 </div>
 
                 <div class="card p-0">
-                    <div class="movie-poster" style="background-image: url('https://image.tmdb.org/t/p/w500/A31OEqX2y5H5hDheg2i0rLdKAZG.jpg');">
-                        <div class="streaming-badge bg-hbo">HBO Max</div>
+                    <div class="movie-poster" style="background-image: url('assets/catalogo/batman.png');">
+                        <div class="streaming-badge bg-hbo">Max</div>
                     </div>
                     <div class="card-content">
                         <h3>Batman: O Cavaleiro das Trevas</h3>
@@ -84,7 +83,7 @@
                 </div>
 
                 <div class="card p-0">
-                    <div class="movie-poster" style="background-image: url('https://image.tmdb.org/t/p/w500/j6lMep0WTY8N3q6x79rZem0f1Fh.jpg');">
+                    <div class="movie-poster" style="background-image: url('assets/catalogo/topgun.png');">
                         <div class="streaming-badge bg-telecine">Telecine</div>
                     </div>
                     <div class="card-content">
@@ -92,6 +91,37 @@
                         <button class="play-btn">▶ Reproduzir</button>
                     </div>
                 </div>
+
+                <div class="card p-0">
+                    <div class="movie-poster" style="background-image: url('assets/catalogo/resgate.png');">
+                        <div class="streaming-badge bg-netflix">Netflix</div>
+                    </div>
+                    <div class="card-content">
+                        <h3>Resgate 2</h3>
+                        <button class="play-btn">▶ Reproduzir</button>
+                    </div>
+                </div>
+
+                <div class="card p-0">
+                    <div class="movie-poster" style="background-image: url('assets/catalogo/tropadeelite.png');">
+                        <div class="streaming-badge bg-globoplay">Globoplay</div>
+                    </div>
+                    <div class="card-content">
+                        <h3>Tropa de Elite</h3>
+                        <button class="play-btn">▶ Reproduzir</button>
+                    </div>
+                </div>
+
+                <div class="card p-0">
+                    <div class="movie-poster" style="background-image: url('assets/catalogo/mandalorian.png');">
+                        <div class="streaming-badge bg-disney">Disney+</div>
+                    </div>
+                    <div class="card-content">
+                        <h3>The Mandalorian</h3>
+                        <button class="play-btn">▶ Reproduzir</button>
+                    </div>
+                </div>
+
             </div>
         </section>
     </main>
@@ -99,23 +129,46 @@
     <main id="tela-add-assinatura" class="tela oculta">
         <section class="sections">
             <h2>Conecte seus Serviços</h2>
+            <p style="color: var(--gray-light); margin-bottom: 30px;">Gerencie suas assinaturas ativas. Clique em "Conectar" para vincular uma conta existente, ou "Assinar" para novos planos.</p>
+
             <div class="grid">
-                <div class="card service-card">
-                    <h3 style="color: #00A859;">Premiere</h3>
-                    <button class="play-btn" style="background: var(--gray-light); color: var(--bg-dark);">✔️ Conectado</button>
-                </div>
-                <div class="card service-card">
-                    <h3 style="color: #FF004D;">Telecine</h3>
-                    <button class="play-btn" style="background: var(--gray-light); color: var(--bg-dark);">✔️ Conectado</button>
-                </div>
-                <div class="card service-card">
+
+                <div class="card service-card" id="srv-netflix">
                     <h3 style="color: #E50914;">Netflix</h3>
-                    <button class="watch-party-btn">+ Conectar Conta</button>
+                    <div class="service-actions">
+                        <button class="watch-party-btn btn-conectar" onclick="toggleServico('srv-netflix')">+ Conectar Conta</button>
+                        <button class="play-btn btn-assinar" style="background: #E50914; color: white;">Assinar</button>
+                        <button class="play-btn btn-conectado oculta" style="background: var(--gray-light); color: var(--bg-dark);" onclick="toggleServico('srv-netflix')">✔️ Conectado (Desconectar)</button>
+                    </div>
                 </div>
-                <div class="card service-card">
-                    <h3 style="color: #00A8E1;">Prime Video</h3>
-                    <button class="watch-party-btn">+ Conectar Conta</button>
+
+                <div class="card service-card" id="srv-max">
+                    <h3 style="color: #002BE7;">Max</h3>
+                    <div class="service-actions">
+                        <button class="watch-party-btn btn-conectar" onclick="toggleServico('srv-max')">+ Conectar Conta</button>
+                        <button class="play-btn btn-assinar" style="background: #002BE7; color: white;">Assinar</button>
+                        <button class="play-btn btn-conectado oculta" style="background: var(--gray-light); color: var(--bg-dark);" onclick="toggleServico('srv-max')">✔️ Conectado (Desconectar)</button>
+                    </div>
                 </div>
+
+                <div class="card service-card" id="srv-telecine">
+                    <h3 style="color: #FF004D;">Telecine</h3>
+                    <div class="service-actions">
+                        <button class="watch-party-btn btn-conectar oculta" onclick="toggleServico('srv-telecine')">+ Conectar Conta</button>
+                        <button class="play-btn btn-assinar oculta" style="background: #FF004D; color: white;">Assinar</button>
+                        <button class="play-btn btn-conectado" style="background: var(--gray-light); color: var(--bg-dark);" onclick="toggleServico('srv-telecine')">✔️ Conectado (Desconectar)</button>
+                    </div>
+                </div>
+
+                 <div class="card service-card" id="srv-premiere">
+                    <h3 style="color: #00A859;">Premiere</h3>
+                    <div class="service-actions">
+                        <button class="watch-party-btn btn-conectar" onclick="toggleServico('srv-premiere')">+ Conectar Conta</button>
+                        <button class="play-btn btn-assinar" style="background: #00A859; color: white;">Assinar</button>
+                        <button class="play-btn btn-conectado oculta" style="background: var(--gray-light); color: var(--bg-dark);" onclick="toggleServico('srv-premiere')">✔️ Conectado (Desconectar)</button>
+                    </div>
+                </div>
+
             </div>
         </section>
     </main>
@@ -123,15 +176,25 @@
     <main id="tela-premium" class="tela oculta">
         <section class="sections text-center">
             <h2 style="border: none; text-align: center; font-size: 2.5rem; color: var(--neon-blue);">Faça o Upgrade para o Premium</h2>
-            <div class="grid" style="max-width: 400px; margin: 0 auto;">
+            <div class="grid" style="max-width: 800px; margin: 0 auto;">
+                <div class="card" style="opacity: 0.8;">
+                    <h3>Plano Free</h3>
+                    <h2 style="margin: 20px 0;">R$ 0,00 <span style="font-size: 1rem; color: var(--gray-light)">/mês</span></h2>
+                    <ul style="text-align: left; line-height: 2; list-style: none;">
+                        <li>✔️ Busca Universal no Catálogo</li>
+                        <li>✔️ <strong>Conexão de até 2 serviços</strong></li>
+                        <li>❌ Contém Propagandas de Lojas</li>
+                    </ul>
+                </div>
                 <div class="card" style="border-color: var(--magenta); box-shadow: 0 0 20px rgba(233, 69, 96, 0.3);">
                     <h3 style="color: var(--magenta);">Plano Premium</h3>
                     <h2 style="margin: 20px 0;">R$ 14,90 <span style="font-size: 1rem; color: var(--gray-light)">/mês</span></h2>
                     <ul style="text-align: left; line-height: 2; list-style: none;">
-                        <li>✔️ Contas Ilimitadas</li>
-                        <li>✔️ <strong>Zero Propagandas de Lojas</strong></li>
-                        <li>✔️ Watch Party Ilimitado</li>
+                        <li>✔️ <strong>Conexão Ilimitada</strong></li>
+                        <li>✔️ <strong>Zero Propagandas</strong></li>
+                        <li>✔️ Watch Party <strong>(Até 8 pessoas)</strong></li>
                     </ul>
+                    <button class="premium-btn" style="width: 100%; margin-top: 20px;">Assinar Agora</button>
                 </div>
             </div>
         </section>

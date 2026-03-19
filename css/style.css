@@ -123,3 +123,26 @@ nav a:hover { color: var(--neon-blue); text-shadow: 0 0 8px var(--neon-blue); }
     overflow: hidden;
     text-overflow: ellipsis;
 }
+
+/* --- ESTILOS DOS BOTÕES DE SERVIÇOS --- */
+.service-card {
+    min-height: 220px;
+}
+.service-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Espaço entre o botão Conectar e Assinar */
+    width: 100%;
+    margin-top: 15px;
+}
+.btn-assinar {
+    border: 1px solid rgba(255,255,255,0.2);
+}
+.btn-conectado {
+    font-size: 0.9rem;
+    box-shadow: 0 0 10px rgba(255,255,255,0.1);
+}
+
+/* Novas Cores de Badges (Séries adicionais) */
+.bg-globoplay { background: rgba(255, 103, 0, 0.9); }
+.bg-disney { background: rgba(17, 60, 207, 0.9); }
