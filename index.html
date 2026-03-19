@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StreamHub Connect - Systems Developer</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <main id="tela-login" class="tela ativa login-bg">
+        <div class="login-box">
+            <img src="assets/logo.png" alt="StreamHub Connect" style="height: 50px; margin-bottom: 20px;">
+            <h2>Acesse seu Hub</h2>
+            <p style="color: var(--gray-light); margin-bottom: 20px; font-size: 0.9rem;">Dica: Use admin/admin para modo Premium</p>
+            <input type="text" id="username" placeholder="Usuário" class="input-form">
+            <input type="password" id="password" placeholder="Senha" class="input-form">
+            <button onclick="fazerLogin()" class="play-btn">Entrar</button>
+        </div>
+    </main>
+
+    <header id="header-nav" style="display: none;">
+        <div class="logo"><img src="logo.png" alt="StreamHub Connect"></div>
+        <nav>
+            <a href="#" onclick="navegar('tela-home')">Início</a>
+            <a href="#" onclick="navegar('tela-catalogo-acao')">Ação & Aventura (Novo)</a>
+            <a href="#" onclick="navegar('tela-add-assinatura')">Conectar Serviços</a>
+        </nav>
+        <button id="btn-upgrade" class="premium-btn" onclick="navegar('tela-premium')">Seja Premium</button>
+        <button class="watch-party-btn" style="width: auto; padding: 10px; margin-left: 10px;" onclick="sair()">Sair</button>
+    </header>
+
+    <main id="tela-home" class="tela oculta">
+        <div class="ad-banner general-ad" style="border-color: #00F2FF; background: rgba(0, 242, 255, 0.1);">
+            <div>
+                <span class="ad-tag" style="background: #00F2FF; color: #000;">Patrocinador</span>
+                <strong>Compre o novo PlayStation 5 com 15% de desconto na Loja Cyber!</strong>
+            </div>
+            <button class="play-btn" style="width: auto; padding: 5px 15px;">Ver Oferta</button>
+        </div>
+
+        <section class="hero">
+            <h1>Onde o entretenimento se encontra</h1>
+            <p>Busque, encontre e assista. Sem trocar de aplicativo.</p>
+            <div class="search-bar">
+                <input type="text" placeholder="Busque por filmes, séries ou gêneros...">
+                <button>Pesquisar</button>
+            </div>
+        </section>
+
+        <div class="ad-banner streaming-promo" style="border-color: #E50914; background: rgba(229, 9, 20, 0.1);">
+            <div>
+                <span class="ad-tag" style="background: #E50914;">Lançamento Netflix</span>
+                <strong>A nova temporada de The Witcher já está disponível. Assista agora!</strong>
+            </div>
+            <button class="premium-btn" style="padding: 5px 15px; background: #E50914;">Assistir</button>
+        </div>
+    </main>
+
+    <main id="tela-catalogo-acao" class="tela oculta">
+        <section class="sections">
+            <h2 style="border-color: var(--magenta);">Explorar: Ação & Aventura</h2>
+            <p style="color: var(--gray-light); margin-bottom: 30px;">Títulos em alta baseados nos seus serviços conectados.</p>
+
+            <div class="grid">
+                <div class="card p-0">
+                    <div class="movie-poster" style="background-image: url('https://image.tmdb.org/t/p/w500/8cdWjvZQUrmU318vA9Ppe0h6g31.jpg');">
+                        <div class="streaming-badge bg-prime">Prime Video</div>
+                    </div>
+                    <div class="card-content">
+                        <h3>O Senhor dos Anéis</h3>
+                        <button class="play-btn">▶ Reproduzir</button>
+                    </div>
+                </div>
+
+                <div class="card p-0">
+                    <div class="movie-poster" style="background-image: url('https://image.tmdb.org/t/p/w500/A31OEqX2y5H5hDheg2i0rLdKAZG.jpg');">
+                        <div class="streaming-badge bg-hbo">HBO Max</div>
+                    </div>
+                    <div class="card-content">
+                        <h3>Batman: O Cavaleiro das Trevas</h3>
+                        <button class="play-btn">▶ Reproduzir</button>
+                    </div>
+                </div>
+
+                <div class="card p-0">
+                    <div class="movie-poster" style="background-image: url('https://image.tmdb.org/t/p/w500/j6lMep0WTY8N3q6x79rZem0f1Fh.jpg');">
+                        <div class="streaming-badge bg-telecine">Telecine</div>
+                    </div>
+                    <div class="card-content">
+                        <h3>Top Gun: Maverick</h3>
+                        <button class="play-btn">▶ Reproduzir</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <main id="tela-add-assinatura" class="tela oculta">
+        <section class="sections">
+            <h2>Conecte seus Serviços</h2>
+            <div class="grid">
+                <div class="card service-card">
+                    <h3 style="color: #00A859;">Premiere</h3>
+                    <button class="play-btn" style="background: var(--gray-light); color: var(--bg-dark);">✔️ Conectado</button>
+                </div>
+                <div class="card service-card">
+                    <h3 style="color: #FF004D;">Telecine</h3>
+                    <button class="play-btn" style="background: var(--gray-light); color: var(--bg-dark);">✔️ Conectado</button>
+                </div>
+                <div class="card service-card">
+                    <h3 style="color: #E50914;">Netflix</h3>
+                    <button class="watch-party-btn">+ Conectar Conta</button>
+                </div>
+                <div class="card service-card">
+                    <h3 style="color: #00A8E1;">Prime Video</h3>
+                    <button class="watch-party-btn">+ Conectar Conta</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <main id="tela-premium" class="tela oculta">
+        <section class="sections text-center">
+            <h2 style="border: none; text-align: center; font-size: 2.5rem; color: var(--neon-blue);">Faça o Upgrade para o Premium</h2>
+            <div class="grid" style="max-width: 400px; margin: 0 auto;">
+                <div class="card" style="border-color: var(--magenta); box-shadow: 0 0 20px rgba(233, 69, 96, 0.3);">
+                    <h3 style="color: var(--magenta);">Plano Premium</h3>
+                    <h2 style="margin: 20px 0;">R$ 14,90 <span style="font-size: 1rem; color: var(--gray-light)">/mês</span></h2>
+                    <ul style="text-align: left; line-height: 2; list-style: none;">
+                        <li>✔️ Contas Ilimitadas</li>
+                        <li>✔️ <strong>Zero Propagandas de Lojas</strong></li>
+                        <li>✔️ Watch Party Ilimitado</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,125 @@
+/* Importando fontes modernas do Google */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans:wght@400;600&display=swap');
+
+/* Paleta de Cores Cyber-Noir base */
+:root {
+    --bg-dark: #1A1A1D;
+    --text-light: #FFFFFF;
+    --glass-bg: rgba(78, 78, 80, 0.4);
+    --neon-blue: #00F2FF;
+    --magenta: #E94560;
+    --gray-light: #D1D1D1;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    font-family: 'Open Sans', sans-serif;
+    overflow-x: hidden;
+}
+
+/* Ocultar telas inativas */
+.oculta { display: none !important; }
+.ativa { display: block; animation: fadeIn 0.4s ease-in-out; }
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Header / Navegação */
+header {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 20px 50px; background: rgba(26, 26, 29, 0.9);
+    border-bottom: 1px solid rgba(0, 242, 255, 0.2);
+    position: sticky; top: 0; z-index: 100; backdrop-filter: blur(10px);
+}
+.logo img { height: 40px; filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.2)); }
+nav a { color: var(--text-light); text-decoration: none; margin: 0 15px; font-family: 'Montserrat', sans-serif; transition: 0.3s; }
+nav a:hover { color: var(--neon-blue); text-shadow: 0 0 8px var(--neon-blue); }
+
+/* Botões Globais */
+.premium-btn { background: var(--magenta); color: white; border: none; padding: 10px 20px; border-radius: 5px; font-weight: bold; cursor: pointer; transition: 0.3s; }
+.premium-btn:hover { box-shadow: 0 0 15px var(--magenta); transform: scale(1.05); }
+.watch-party-btn { background: transparent; border: 2px solid var(--neon-blue); color: var(--neon-blue); padding: 10px; border-radius: 8px; width: 100%; cursor: pointer; transition: 0.3s; font-weight: bold;}
+.watch-party-btn:hover { background: var(--neon-blue); color: var(--bg-dark); box-shadow: 0 0 10px var(--neon-blue); }
+.play-btn { background: var(--neon-blue); color: var(--bg-dark); border: none; padding: 10px; border-radius: 8px; width: 100%; font-weight: bold; cursor: pointer; transition: 0.3s;}
+
+/* Sections, Hero e Cards */
+.hero { text-align: center; padding: 80px 20px; background: radial-gradient(circle at center, rgba(0, 242, 255, 0.1) 0%, var(--bg-dark) 70%); }
+.hero h1 { font-family: 'Montserrat', sans-serif; font-size: 3rem; margin-bottom: 15px; }
+.search-bar { display: flex; max-width: 600px; margin: 0 auto; box-shadow: 0 0 20px rgba(0, 242, 255, 0.1); border-radius: 30px; }
+.search-bar input { flex: 1; padding: 15px 25px; border-radius: 30px 0 0 30px; border: 1px solid var(--neon-blue); background: var(--glass-bg); color: white; outline: none; }
+.search-bar button { padding: 15px 30px; border-radius: 0 30px 30px 0; border: none; background: var(--neon-blue); cursor: pointer; font-weight: bold; }
+
+.sections { padding: 50px; max-width: 1200px; margin: 0 auto; }
+.sections h2 { font-family: 'Montserrat', sans-serif; border-left: 4px solid var(--neon-blue); padding-left: 10px; margin-bottom: 30px; }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+
+.card { background: var(--glass-bg); border: 1px solid rgba(0, 242, 255, 0.2); border-radius: 15px; padding: 30px; text-align: center; backdrop-filter: blur(10px); transition: 0.3s; }
+.card:hover { border-color: var(--neon-blue); transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0, 242, 255, 0.1); }
+.card h3 { margin-bottom: 15px; font-family: 'Montserrat'; }
+.card p { margin-bottom: 20px; color: var(--gray-light); line-height: 1.5; }
+
+/* --- ESTILOS DA TELA DE LOGIN --- */
+.login-bg { display: flex !important; align-items: center; justify-content: center; height: 100vh; background: radial-gradient(circle at center, rgba(0, 242, 255, 0.15) 0%, var(--bg-dark) 80%); }
+.login-box { background: var(--glass-bg); padding: 40px; border-radius: 15px; border: 1px solid var(--neon-blue); text-align: center; width: 100%; max-width: 400px; box-shadow: 0 0 30px rgba(0, 242, 255, 0.1); backdrop-filter: blur(10px); }
+.input-form { width: 100%; padding: 15px; margin-bottom: 15px; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.2); background: rgba(0, 0, 0, 0.5); color: white; font-size: 1rem; outline: none; transition: 0.3s;}
+.input-form:focus { border-color: var(--neon-blue); background: rgba(0,0,0,0.8); }
+
+/* --- ESTILOS DOS ANÚNCIOS (ADS) --- */
+.ad-banner { background: rgba(233, 69, 96, 0.1); border: 1px solid var(--magenta); padding: 15px 50px; display: flex; justify-content: space-between; align-items: center; margin: 20px auto; max-width: 1200px; border-radius: 8px; }
+.ad-tag { background: var(--magenta); color: white; font-size: 0.7rem; font-weight: bold; padding: 3px 8px; border-radius: 4px; margin-right: 15px; text-transform: uppercase; }
+
+/* --- ESTILOS EXTRAS (CONECTAR SERVIÇOS) --- */
+.service-card { padding: 20px; display: flex; flex-direction: column; justify-content: space-between; align-items: center; height: 160px; }
+.text-center { text-align: center; }
+
+/* --- ESTILOS DO CATÁLOGO DE FILMES --- */
+
+/* Tira o padding do card para a imagem encostar na borda */
+.p-0 { padding: 0 !important; overflow: hidden; }
+
+/* Configuração do Pôster do Filme */
+.movie-poster {
+    height: 350px;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    border-bottom: 2px solid rgba(0, 242, 255, 0.2);
+}
+
+/* Selo do Streaming no canto da capa */
+.streaming-badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    font-weight: 800;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+    backdrop-filter: blur(5px);
+}
+
+/* Cores Oficiais das Plataformas para os Selos */
+.bg-netflix { background: rgba(229, 9, 20, 0.9); }
+.bg-prime { background: rgba(0, 168, 225, 0.9); }
+.bg-hbo { background: rgba(90, 46, 152, 0.9); }
+.bg-telecine { background: rgba(255, 0, 77, 0.9); }
+
+/* Conteúdo abaixo da capa do filme */
+.card-content {
+    padding: 20px;
+}
+.card-content h3 {
+    font-size: 1.2rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
