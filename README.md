@@ -62,3 +62,33 @@ STREAMHUB-CONNECT/
         ├── aneis.png
         ├── batman.png
         └── topgun.png
+```
+## 🚀 Como Executar Localmente
+
+Siga os passos abaixo para testar o projeto na sua máquina:
+
+Clone este repositório:
+
+```Bash
+git clone [https://github.com/dev-for-dev/streamhub-connect.git](https://github.com/dev-for-dev/streamhub-connect.git)
+```
+Abra a pasta do projeto:
+
+```Bash
+cd streamhub-connect
+```
+Basta abrir o arquivo index.html em qualquer navegador web moderno (Chrome, Edge, Firefox, Safari). Não é necessária a instalação de dependências ou servidores locais.
+
+Dica de Teste:
+Na tela de login, utilize as credenciais abaixo para testar o sistema sem anúncios:
+
+Usuário: admin
+
+Senha: admin
+
+<div align="center">
+Desenvolvido com 💻 por <strong>Systems Developer</strong>.
+
+
+Inovando no Entretenimento Digital.
+</div>
