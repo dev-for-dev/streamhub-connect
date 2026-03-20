@@ -20,109 +20,51 @@
     </main>
 
     <header id="header-nav" style="display: none;">
-        <div class="logo"><img src="assets/logo.png" alt="StreamHub Connect"></div>
-        <nav>
-            <a href="#" onclick="navegar('tela-home')">Início</a>
-            <a href="#" onclick="navegar('tela-catalogo-acao')">Ação & Aventura</a>
-            <a href="#" onclick="navegar('tela-add-assinatura')">Conectar Serviços</a>
-        </nav>
-        <button id="btn-upgrade" class="premium-btn" onclick="navegar('tela-premium')">Seja Premium</button>
-        <button class="watch-party-btn" style="width: auto; padding: 10px; margin-left: 10px;" onclick="sair()">Sair</button>
+        <div class="header-content container">
+            <div class="logo"><img src="assets/logo.png" alt="StreamHub Connect"></div>
+
+            <button class="menu-toggle" id="menu-toggle" aria-label="Abrir Menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+
+            <nav id="nav-links">
+                <a href="#" onclick="fecharMenuNavegar('tela-home')">Início</a>
+                <a href="#" onclick="fecharMenuEabrirCatalogo('todos')">Catálogo Completo</a>
+                <a href="#" onclick="fecharMenuEabrirCatalogo('filme')">Filmes</a>
+                <a href="#" onclick="fecharMenuEabrirCatalogo('serie')">Séries</a>
+                <a href="#" onclick="fecharMenuNavegar('tela-add-assinatura')">Conectar Serviços</a>
+
+                <button id="btn-upgrade" class="premium-btn menu-btn" onclick="fecharMenuNavegar('tela-premium')">Seja Premium</button>
+                <button class="watch-party-btn menu-btn sair-btn" onclick="fecharMenuNavegar('sair')">Sair</button>
+            </nav>
+        </div>
     </header>
 
     <main id="tela-home" class="tela oculta">
-        <div class="ad-banner general-ad" style="border-color: #00F2FF; background: rgba(0, 242, 255, 0.1);">
-            <div>
-                <span class="ad-tag" style="background: #00F2FF; color: #000;">Patrocinador</span>
-                <strong>Compre o novo PlayStation 5 com 15% de desconto na Loja Cyber!</strong>
-            </div>
-            <button class="play-btn" style="width: auto; padding: 5px 15px;">Ver Oferta</button>
-        </div>
+        <div id="container-ad-geral" class="ad-banner general-ad" style="border-color: #00F2FF; background: rgba(0, 242, 255, 0.1);"></div>
 
-        <section class="hero">
-            <h1>Onde o entretenimento se encontra</h1>
-            <p>Busque, encontre e assista. Sem trocar de aplicativo.</p>
-            <div class="search-bar">
-                <input type="text" placeholder="Busque por filmes, séries ou gêneros...">
-                <button>Pesquisar</button>
+        <section class="sections" style="padding-top: 20px;">
+
+            <div id="carousel-slides" class="hero-carousel">
+                </div>
+
+            <div class="search-bar" style="margin-top: 20px;">
+                <input type="text" id="input-pesquisa" placeholder="Busque por filmes, séries ou gêneros...">
+                <button onclick="fazerPesquisa()">Pesquisar</button>
             </div>
         </section>
 
-        <div class="ad-banner streaming-promo" style="border-color: #E50914; background: rgba(229, 9, 20, 0.1);">
-            <div>
-                <span class="ad-tag" style="background: #E50914;">Lançamento Netflix</span>
-                <strong>A nova temporada de The Witcher já está disponível. Assista agora!</strong>
-            </div>
-            <button class="premium-btn" style="padding: 5px 15px; background: #E50914;">Assistir</button>
-        </div>
+        <div id="container-ad-streaming" class="ad-banner streaming-promo" style="border-color: #E50914; background: rgba(229, 9, 20, 0.1);"></div>
     </main>
 
-    <main id="tela-catalogo-acao" class="tela oculta">
+    <main id="tela-catalogo" class="tela oculta">
         <section class="sections">
-            <h2 style="border-color: var(--magenta);">Explorar: Ação & Aventura</h2>
-            <div class="grid">
+            <h2 id="titulo-catalogo" style="border-color: var(--magenta);">Explorar</h2>
+            <p id="subtitulo-catalogo" style="color: var(--gray-light); margin-bottom: 30px;">Encontre seu próximo entretenimento.</p>
 
-                <div class="card p-0">
-                    <div class="movie-poster" style="background-image: url('assets/catalogo/aneis.png');">
-                        <div class="streaming-badge bg-prime">Prime Video</div>
-                    </div>
-                    <div class="card-content">
-                        <h3>O Senhor dos Anéis</h3>
-                        <button class="play-btn">▶ Reproduzir</button>
-                    </div>
-                </div>
-
-                <div class="card p-0">
-                    <div class="movie-poster" style="background-image: url('assets/catalogo/batman.png');">
-                        <div class="streaming-badge bg-hbo">Max</div>
-                    </div>
-                    <div class="card-content">
-                        <h3>Batman: O Cavaleiro das Trevas</h3>
-                        <button class="play-btn">▶ Reproduzir</button>
-                    </div>
-                </div>
-
-                <div class="card p-0">
-                    <div class="movie-poster" style="background-image: url('assets/catalogo/topgun.png');">
-                        <div class="streaming-badge bg-telecine">Telecine</div>
-                    </div>
-                    <div class="card-content">
-                        <h3>Top Gun: Maverick</h3>
-                        <button class="play-btn">▶ Reproduzir</button>
-                    </div>
-                </div>
-
-                <div class="card p-0">
-                    <div class="movie-poster" style="background-image: url('assets/catalogo/resgate.png');">
-                        <div class="streaming-badge bg-netflix">Netflix</div>
-                    </div>
-                    <div class="card-content">
-                        <h3>Resgate 2</h3>
-                        <button class="play-btn">▶ Reproduzir</button>
-                    </div>
-                </div>
-
-                <div class="card p-0">
-                    <div class="movie-poster" style="background-image: url('assets/catalogo/tropadeelite.png');">
-                        <div class="streaming-badge bg-globoplay">Globoplay</div>
-                    </div>
-                    <div class="card-content">
-                        <h3>Tropa de Elite</h3>
-                        <button class="play-btn">▶ Reproduzir</button>
-                    </div>
-                </div>
-
-                <div class="card p-0">
-                    <div class="movie-poster" style="background-image: url('assets/catalogo/mandalorian.png');">
-                        <div class="streaming-badge bg-disney">Disney+</div>
-                    </div>
-                    <div class="card-content">
-                        <h3>The Mandalorian</h3>
-                        <button class="play-btn">▶ Reproduzir</button>
-                    </div>
-                </div>
-
-            </div>
+            <div id="grid-catalogo" class="grid"></div>
         </section>
     </main>
 
@@ -131,45 +73,7 @@
             <h2>Conecte seus Serviços</h2>
             <p style="color: var(--gray-light); margin-bottom: 30px;">Gerencie suas assinaturas ativas. Clique em "Conectar" para vincular uma conta existente, ou "Assinar" para novos planos.</p>
 
-            <div class="grid">
-
-                <div class="card service-card" id="srv-netflix">
-                    <h3 style="color: #E50914;">Netflix</h3>
-                    <div class="service-actions">
-                        <button class="watch-party-btn btn-conectar" onclick="toggleServico('srv-netflix')">+ Conectar Conta</button>
-                        <button class="play-btn btn-assinar" style="background: #E50914; color: white;">Assinar</button>
-                        <button class="play-btn btn-conectado oculta" style="background: var(--gray-light); color: var(--bg-dark);" onclick="toggleServico('srv-netflix')">✔️ Conectado (Desconectar)</button>
-                    </div>
-                </div>
-
-                <div class="card service-card" id="srv-max">
-                    <h3 style="color: #002BE7;">Max</h3>
-                    <div class="service-actions">
-                        <button class="watch-party-btn btn-conectar" onclick="toggleServico('srv-max')">+ Conectar Conta</button>
-                        <button class="play-btn btn-assinar" style="background: #002BE7; color: white;">Assinar</button>
-                        <button class="play-btn btn-conectado oculta" style="background: var(--gray-light); color: var(--bg-dark);" onclick="toggleServico('srv-max')">✔️ Conectado (Desconectar)</button>
-                    </div>
-                </div>
-
-                <div class="card service-card" id="srv-telecine">
-                    <h3 style="color: #FF004D;">Telecine</h3>
-                    <div class="service-actions">
-                        <button class="watch-party-btn btn-conectar oculta" onclick="toggleServico('srv-telecine')">+ Conectar Conta</button>
-                        <button class="play-btn btn-assinar oculta" style="background: #FF004D; color: white;">Assinar</button>
-                        <button class="play-btn btn-conectado" style="background: var(--gray-light); color: var(--bg-dark);" onclick="toggleServico('srv-telecine')">✔️ Conectado (Desconectar)</button>
-                    </div>
-                </div>
-
-                 <div class="card service-card" id="srv-premiere">
-                    <h3 style="color: #00A859;">Premiere</h3>
-                    <div class="service-actions">
-                        <button class="watch-party-btn btn-conectar" onclick="toggleServico('srv-premiere')">+ Conectar Conta</button>
-                        <button class="play-btn btn-assinar" style="background: #00A859; color: white;">Assinar</button>
-                        <button class="play-btn btn-conectado oculta" style="background: var(--gray-light); color: var(--bg-dark);" onclick="toggleServico('srv-premiere')">✔️ Conectado (Desconectar)</button>
-                    </div>
-                </div>
-
-            </div>
+            <div id="grid-servicos" class="grid"></div>
         </section>
     </main>
 
@@ -194,7 +98,31 @@
                         <li>✔️ <strong>Zero Propagandas</strong></li>
                         <li>✔️ Watch Party <strong>(Até 8 pessoas)</strong></li>
                     </ul>
-                    <button class="premium-btn" style="width: 100%; margin-top: 20px;">Assinar Agora</button>
+                    <button id="btn-assinar-premium" class="premium-btn" style="width: 100%; margin-top: 20px;" onclick="toggleAssinaturaPremium()">Assinar Agora</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <main id="tela-player" class="tela oculta">
+        <section class="sections text-center">
+            <div style="display: flex; justify-content: space-between; align-items: center; max-width: 1000px; margin: 0 auto 20px auto;">
+                <h2 id="player-title" style="border:none; margin:0; text-align:left;">Nome do Filme</h2>
+                <button class="watch-party-btn" style="width: auto; padding: 5px 15px;" onclick="navegar('tela-catalogo')">✖ Fechar Player</button>
+            </div>
+
+            <div class="player-wrapper">
+                <div id="player-video" class="player-screen">
+                    <span style="font-size: 5rem; color: rgba(255,255,255,0.8); text-shadow: 0 0 20px rgba(0,242,255,0.8);">▶</span>
+                </div>
+                <div class="player-controls">
+                    <span style="color: white; font-weight: bold; font-size: 1.2rem;">⏸</span>
+                    <span style="color: white; font-size: 0.9rem;">14:03</span>
+                    <div class="progress-bar">
+                        <div class="progress-fill"></div>
+                    </div>
+                    <span style="color: white; font-size: 0.9rem;">01:54:20</span>
+                    <span style="color: white; font-size: 1.2rem;">⚙️ 🔲</span>
                 </div>
             </div>
         </section>

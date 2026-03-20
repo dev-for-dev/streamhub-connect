@@ -1,7 +1,8 @@
-/* Importando fontes modernas do Google */
+/* ==========================================
+   1. FONTES E VARIÁVEIS GLOBAIS
+   ========================================== */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans:wght@400;600&display=swap');
 
-/* Paleta de Cores Cyber-Noir base */
 :root {
     --bg-dark: #1A1A1D;
     --text-light: #FFFFFF;
@@ -11,138 +12,375 @@
     --gray-light: #D1D1D1;
 }
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
 body {
-    background-color: var(--bg-dark);
+    background: linear-gradient(-45deg, #0d0d0f, #1A1A1D, #2a1124, #0b1a20);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
     color: var(--text-light);
     font-family: 'Open Sans', sans-serif;
     overflow-x: hidden;
+    min-height: 100vh;
 }
 
-/* Ocultar telas inativas */
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* ==========================================
+   2. CLASSES UTILITÁRIAS E ANIMAÇÕES
+   ========================================== */
 .oculta { display: none !important; }
 .ativa { display: block; animation: fadeIn 0.4s ease-in-out; }
+.p-0 { padding: 0 !important; overflow: hidden; }
+.text-center { text-align: center; }
 
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(15px); }
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* Header / Navegação */
-header {
-    display: flex; justify-content: space-between; align-items: center;
-    padding: 20px 50px; background: rgba(26, 26, 29, 0.9);
+/* ==========================================
+   3. BOTÕES GLOBAIS
+   ========================================== */
+.premium-btn {
+    background: var(--magenta); color: white; border: none; padding: 10px 20px;
+    border-radius: 5px; font-weight: bold; cursor: pointer; transition: 0.3s;
+}
+.premium-btn:hover { box-shadow: 0 0 15px var(--magenta); transform: scale(1.05); }
+
+.watch-party-btn {
+    background: transparent; border: 2px solid var(--neon-blue); color: var(--neon-blue);
+    padding: 10px; border-radius: 8px; width: 100%; cursor: pointer; transition: 0.3s; font-weight: bold;
+}
+.watch-party-btn:hover { background: var(--neon-blue); color: var(--bg-dark); box-shadow: 0 0 10px var(--neon-blue); }
+
+.play-btn {
+    background: var(--neon-blue); color: var(--bg-dark); border: none;
+    padding: 10px; border-radius: 8px; width: 100%; font-weight: bold; cursor: pointer; transition: 0.3s;
+}
+
+/* ==========================================
+   4. CABEÇALHO E NAVEGAÇÃO (DESKTOP)
+   ========================================== */
+#header-nav {
+    position: sticky; top: 0; left: 0; width: 100%;
+    background: rgba(26, 26, 29, 0.9);
     border-bottom: 1px solid rgba(0, 242, 255, 0.2);
-    position: sticky; top: 0; z-index: 100; backdrop-filter: blur(10px);
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+}
+.header-content {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 15px 50px; max-width: 1400px; margin: 0 auto;
 }
 .logo img { height: 40px; filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.2)); }
-nav a { color: var(--text-light); text-decoration: none; margin: 0 15px; font-family: 'Montserrat', sans-serif; transition: 0.3s; }
-nav a:hover { color: var(--neon-blue); text-shadow: 0 0 8px var(--neon-blue); }
 
-/* Botões Globais */
-.premium-btn { background: var(--magenta); color: white; border: none; padding: 10px 20px; border-radius: 5px; font-weight: bold; cursor: pointer; transition: 0.3s; }
-.premium-btn:hover { box-shadow: 0 0 15px var(--magenta); transform: scale(1.05); }
-.watch-party-btn { background: transparent; border: 2px solid var(--neon-blue); color: var(--neon-blue); padding: 10px; border-radius: 8px; width: 100%; cursor: pointer; transition: 0.3s; font-weight: bold;}
-.watch-party-btn:hover { background: var(--neon-blue); color: var(--bg-dark); box-shadow: 0 0 10px var(--neon-blue); }
-.play-btn { background: var(--neon-blue); color: var(--bg-dark); border: none; padding: 10px; border-radius: 8px; width: 100%; font-weight: bold; cursor: pointer; transition: 0.3s;}
+#header-nav nav { display: flex; align-items: center; gap: 20px; }
+#header-nav nav a {
+    color: var(--text-light); text-decoration: none; font-size: 1rem;
+    font-family: 'Montserrat', sans-serif; transition: 0.3s;
+}
+#header-nav nav a:hover { color: var(--neon-blue); text-shadow: 0 0 8px var(--neon-blue); }
 
-/* Sections, Hero e Cards */
+.sair-btn { margin-left: 10px; width: auto; padding: 10px; }
+.menu-toggle { display: none; /* Oculto no PC */ }
+
+/* ==========================================
+   5. TELA DE LOGIN
+   ========================================== */
+.login-bg {
+    display: flex !important; align-items: center; justify-content: center; height: 100vh;
+    background: radial-gradient(circle at center, rgba(0, 242, 255, 0.15) 0%, var(--bg-dark) 80%);
+}
+.login-box {
+    background: var(--glass-bg); padding: 40px; border-radius: 15px; border: 1px solid var(--neon-blue);
+    text-align: center; width: 100%; max-width: 400px; box-shadow: 0 0 30px rgba(0, 242, 255, 0.1);
+    backdrop-filter: blur(10px);
+}
+.input-form {
+    width: 100%; padding: 15px; margin-bottom: 15px; border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.2); background: rgba(0, 0, 0, 0.5);
+    color: white; font-size: 1rem; outline: none; transition: 0.3s;
+}
+.input-form:focus { border-color: var(--neon-blue); background: rgba(0,0,0,0.8); }
+
+/* ==========================================
+   6. ESTRUTURA GERAL (SECTIONS, GRID, BUSCA)
+   ========================================== */
 .hero { text-align: center; padding: 80px 20px; background: radial-gradient(circle at center, rgba(0, 242, 255, 0.1) 0%, var(--bg-dark) 70%); }
 .hero h1 { font-family: 'Montserrat', sans-serif; font-size: 3rem; margin-bottom: 15px; }
+
 .search-bar { display: flex; max-width: 600px; margin: 0 auto; box-shadow: 0 0 20px rgba(0, 242, 255, 0.1); border-radius: 30px; }
 .search-bar input { flex: 1; padding: 15px 25px; border-radius: 30px 0 0 30px; border: 1px solid var(--neon-blue); background: var(--glass-bg); color: white; outline: none; }
 .search-bar button { padding: 15px 30px; border-radius: 0 30px 30px 0; border: none; background: var(--neon-blue); cursor: pointer; font-weight: bold; }
 
+.container { max-width: 1400px; margin: 0 auto; }
 .sections { padding: 50px; max-width: 1200px; margin: 0 auto; }
 .sections h2 { font-family: 'Montserrat', sans-serif; border-left: 4px solid var(--neon-blue); padding-left: 10px; margin-bottom: 30px; }
+
 .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
 
-.card { background: var(--glass-bg); border: 1px solid rgba(0, 242, 255, 0.2); border-radius: 15px; padding: 30px; text-align: center; backdrop-filter: blur(10px); transition: 0.3s; }
+/* ==========================================
+   7. CARDS E CATÁLOGO
+   ========================================== */
+.card {
+    background: var(--glass-bg); border: 1px solid rgba(0, 242, 255, 0.2); border-radius: 15px;
+    text-align: center; backdrop-filter: blur(10px); transition: 0.3s;
+}
 .card:hover { border-color: var(--neon-blue); transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0, 242, 255, 0.1); }
 .card h3 { margin-bottom: 15px; font-family: 'Montserrat'; }
 .card p { margin-bottom: 20px; color: var(--gray-light); line-height: 1.5; }
 
-/* --- ESTILOS DA TELA DE LOGIN --- */
-.login-bg { display: flex !important; align-items: center; justify-content: center; height: 100vh; background: radial-gradient(circle at center, rgba(0, 242, 255, 0.15) 0%, var(--bg-dark) 80%); }
-.login-box { background: var(--glass-bg); padding: 40px; border-radius: 15px; border: 1px solid var(--neon-blue); text-align: center; width: 100%; max-width: 400px; box-shadow: 0 0 30px rgba(0, 242, 255, 0.1); backdrop-filter: blur(10px); }
-.input-form { width: 100%; padding: 15px; margin-bottom: 15px; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.2); background: rgba(0, 0, 0, 0.5); color: white; font-size: 1rem; outline: none; transition: 0.3s;}
-.input-form:focus { border-color: var(--neon-blue); background: rgba(0,0,0,0.8); }
-
-/* --- ESTILOS DOS ANÚNCIOS (ADS) --- */
-.ad-banner { background: rgba(233, 69, 96, 0.1); border: 1px solid var(--magenta); padding: 15px 50px; display: flex; justify-content: space-between; align-items: center; margin: 20px auto; max-width: 1200px; border-radius: 8px; }
-.ad-tag { background: var(--magenta); color: white; font-size: 0.7rem; font-weight: bold; padding: 3px 8px; border-radius: 4px; margin-right: 15px; text-transform: uppercase; }
-
-/* --- ESTILOS EXTRAS (CONECTAR SERVIÇOS) --- */
-.service-card { padding: 20px; display: flex; flex-direction: column; justify-content: space-between; align-items: center; height: 160px; }
-.text-center { text-align: center; }
-
-/* --- ESTILOS DO CATÁLOGO DE FILMES --- */
-
-/* Tira o padding do card para a imagem encostar na borda */
-.p-0 { padding: 0 !important; overflow: hidden; }
-
-/* Configuração do Pôster do Filme */
+/* Capas de Filmes */
 .movie-poster {
-    height: 350px;
-    background-size: cover;
-    background-position: center;
-    position: relative;
-    border-bottom: 2px solid rgba(0, 242, 255, 0.2);
+    width: 100%; aspect-ratio: 2 / 3; background-size: cover; background-position: top center;
+    position: relative; border-bottom: 2px solid rgba(0, 242, 255, 0.2);
 }
+.card-content { padding: 20px; }
+.card-content h3 { font-size: 1.2rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
-/* Selo do Streaming no canto da capa */
+/* Badges e Cores de Streaming */
 .streaming-badge {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    padding: 6px 12px;
-    border-radius: 8px;
-    font-size: 0.8rem;
-    font-weight: 800;
-    color: white;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
-    backdrop-filter: blur(5px);
+    position: absolute; top: 15px; right: 15px; padding: 6px 12px; border-radius: 8px;
+    font-size: 0.8rem; font-weight: 800; color: white; text-transform: uppercase;
+    letter-spacing: 1px; box-shadow: 0 4px 10px rgba(0,0,0,0.5); backdrop-filter: blur(5px);
 }
-
-/* Cores Oficiais das Plataformas para os Selos */
 .bg-netflix { background: rgba(229, 9, 20, 0.9); }
 .bg-prime { background: rgba(0, 168, 225, 0.9); }
 .bg-hbo { background: rgba(90, 46, 152, 0.9); }
 .bg-telecine { background: rgba(255, 0, 77, 0.9); }
-
-/* Conteúdo abaixo da capa do filme */
-.card-content {
-    padding: 20px;
-}
-.card-content h3 {
-    font-size: 1.2rem;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-/* --- ESTILOS DOS BOTÕES DE SERVIÇOS --- */
-.service-card {
-    min-height: 220px;
-}
-.service-actions {
-    display: flex;
-    flex-direction: column;
-    gap: 10px; /* Espaço entre o botão Conectar e Assinar */
-    width: 100%;
-    margin-top: 15px;
-}
-.btn-assinar {
-    border: 1px solid rgba(255,255,255,0.2);
-}
-.btn-conectado {
-    font-size: 0.9rem;
-    box-shadow: 0 0 10px rgba(255,255,255,0.1);
-}
-
-/* Novas Cores de Badges (Séries adicionais) */
 .bg-globoplay { background: rgba(255, 103, 0, 0.9); }
 .bg-disney { background: rgba(17, 60, 207, 0.9); }
+
+/* ==========================================
+   8. SERVIÇOS E ANÚNCIOS (ADS)
+   ========================================== */
+.service-card { padding: 20px; min-height: 220px; display: flex; flex-direction: column; justify-content: space-between; align-items: center; }
+.service-actions { display: flex; flex-direction: column; gap: 10px; width: 100%; margin-top: 15px; }
+.btn-assinar { border: 1px solid rgba(255,255,255,0.2); }
+.btn-conectado { font-size: 0.9rem; box-shadow: 0 0 10px rgba(255,255,255,0.1); }
+
+.ad-banner {
+    background: rgba(233, 69, 96, 0.1); border: 1px solid var(--magenta); padding: 15px 50px;
+    display: flex; justify-content: space-between; align-items: center; margin: 20px auto;
+    max-width: 1200px; border-radius: 8px;
+}
+.ad-tag {
+    background: var(--magenta); color: white; font-size: 0.7rem; font-weight: bold;
+    padding: 3px 8px; border-radius: 4px; margin-right: 15px; text-transform: uppercase;
+}
+
+/* ==========================================
+   9. CARROSSEL DA HOME
+   ========================================== */
+.hero-carousel {
+    width: 100%; height: 500px; position: relative; border-radius: 20px; overflow: hidden; margin-bottom: 40px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.1);
+}
+.carousel-slide {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out;
+    background-size: cover; background-position: top center;
+}
+.carousel-slide.active { opacity: 1; }
+ /* --- FUNDO ESCURO ATRÁS DO TEXTO PARA GARANTIR LEITURA --- */
+.carousel-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; /* Agora ocupa a altura toda para dar um fade mais suave */
+
+    /* Gradiente mais forte: começa transparente no topo e vai ficando preto sólido na base */
+    background: linear-gradient(
+        to bottom,
+        rgba(26, 26, 29, 0) 40%,
+        rgba(26, 26, 29, 0.7) 60%,
+        rgba(26, 26, 29, 0.95) 90%,
+        var(--bg-dark) 100%
+    );
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 40px;
+    text-align: left;
+}
+.carrossel-title {
+    font-size: 3rem;
+    margin-bottom: 10px;
+    /* A sombra abaixo garante que o contorno fique legível */
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.9);
+}
+
+.carrossel-p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    max-width: 600px;
+    /* Sombra também no subtítulo */
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.9);
+}
+/* ==========================================
+   10. PLAYER DE VÍDEO
+   ========================================== */
+.player-wrapper {
+    width: 100%; max-width: 1000px; margin: 0 auto; aspect-ratio: 16/9; background: #000;
+    position: relative; border-radius: 15px; overflow: hidden; box-shadow: 0 0 40px rgba(0, 242, 255, 0.2);
+    border: 1px solid rgba(255,255,255,0.1);
+}
+.player-screen {
+    width: 100%; height: 100%; background-size: cover; background-position: center; filter: brightness(0.7);
+    display: flex; align-items: center; justify-content: center;
+}
+.player-controls {
+    position: absolute; bottom: 0; width: 100%; padding: 20px;
+    background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+    display: flex; align-items: center; gap: 15px;
+}
+.progress-bar { flex: 1; height: 6px; background: rgba(255,255,255,0.3); border-radius: 5px; cursor: pointer; }
+.progress-fill { width: 15%; height: 100%; background: var(--magenta); border-radius: 5px; position: relative; }
+.progress-fill::after {
+    content: ''; position: absolute; right: -5px; top: -3px; width: 12px; height: 12px; background: white; border-radius: 50%;
+}
+
+/* ==========================================
+   11. RESPONSIVIDADE (TABLETS E iPADS)
+   ========================================== */
+@media (max-width: 1024px) {
+    .header-content { padding: 15px 20px; }
+    #header-nav nav a { font-size: 0.9rem; }
+}
+
+/* ==========================================
+   12. RESPONSIVIDADE (CELULARES)
+   ========================================== */
+@media (max-width: 768px) {
+    /* 1. Ajuste de Containers para aproximar das laterais */
+    .container, .sections {
+        padding-left: 10px;
+        padding-right: 10px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    /* 2. PADRONIZAÇÃO DOS CARDS (Estilo Batman: Largo e Alto) */
+    .grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+        padding: 10px 0;
+        width: 100%;
+    }
+
+    /* Aplica a mesma regra para Catálogo, Assinaturas e Premium */
+    #tela-catalogo .card,
+    #tela-add-assinatura .card,
+    #tela-premium .card {
+        width: 100%;
+        max-width: none;
+        margin: 0 auto 20px auto;
+        border-radius: 12px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        background: #1a1a1d; /* Fundo escuro padrão do card */
+    }
+
+    /* Força a imagem a ter a mesma altura e preenchimento do Batman */
+    #tela-catalogo .card img,
+    #tela-add-assinatura .card img,
+    #tela-premium .card img {
+        width: 100%;
+        height: 450px; /* Altura imponente para mobile */
+        object-fit: cover;
+        object-position: top;
+    }
+
+    /* Conteúdo interno do card */
+    .card-content {
+        padding: 20px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .card-content h3 {
+        font-size: 1.4rem;
+        margin-bottom: 8px;
+        min-height: auto;
+    }
+
+    .card-content p {
+        font-size: 1rem;
+        margin-bottom: 15px;
+        opacity: 0.8;
+    }
+
+    /* Botões Padronizados (Largura Total) */
+    .card-content button,
+    .premium-btn,
+    #tela-catalogo .card-content button {
+        width: 100% !important;
+        padding: 16px !important;
+        font-size: 1.1rem !important;
+        border-radius: 8px !important;
+        margin: 10px 0 0 0 !important;
+        font-weight: bold;
+    }
+
+    /* --- CABEÇALHO E MENU (Mantidos do seu original) --- */
+    #header-nav { padding: 0; }
+    .header-content { padding: 15px; justify-content: space-between; position: relative; width: 100%; }
+    .logo img { height: 30px; }
+
+    .menu-toggle {
+        display: block; background: transparent; border: none; cursor: pointer;
+        padding: 5px; position: relative; z-index: 1100;
+    }
+    .bar {
+        display: block; width: 25px; height: 3px; margin: 5px 0;
+        background: var(--neon-blue); transition: 0.4s; border-radius: 2px;
+    }
+    .menu-toggle.active .bar:nth-child(1) { transform: rotate(-45deg) translate(-5px, 6px); }
+    .menu-toggle.active .bar:nth-child(2) { opacity: 0; }
+    .menu-toggle.active .bar:nth-child(3) { transform: rotate(45deg) translate(-5px, -6px); }
+
+    #header-nav nav {
+        display: flex; flex-direction: column; gap: 0;
+        position: absolute; top: 100%; left: 0; width: 100%;
+        background: rgba(13, 13, 15, 0.98);
+        max-height: 0; overflow: hidden;
+        transition: max-height 0.5s ease-in-out;
+        border-bottom: 0 solid rgba(255,255,255,0.1);
+    }
+    #header-nav nav.active { max-height: 80vh; border-bottom-width: 1px; overflow-y: auto; }
+    #header-nav nav a {
+        display: block; width: 100%; padding: 20px; text-align: center;
+        border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 1.1rem;
+    }
+
+    /* --- CARROSSEL MOBILE --- */
+    .hero-carousel { height: 500px; margin-top: 15px; }
+    .carousel-overlay {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        align-items: center;
+        height: 100%;
+        padding: 30px 20px;
+    }
+    .carrossel-title { font-size: 2.2rem !important; }
+    .carrossel-play { width: 100% !important; max-width: none !important; }
+
+    /* Player e Ad-Banner */
+    .ad-banner { flex-direction: column; text-align: center; gap: 15px; padding: 20px 15px; }
+    .player-controls { flex-wrap: wrap; justify-content: center; gap: 10px; }
+}
